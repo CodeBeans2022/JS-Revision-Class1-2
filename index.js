@@ -275,29 +275,174 @@
 
 // Short version
 
-let grade = 100;
+// let grade = 100;
 
-switch (true) {
+// switch (true) {
 
-    case grade == 100:
+//     case grade == 100:
 
-        console.log('You are awesome');
-        break;
+//         console.log('You are awesome');
+//         break;
 
-    case (grade >= 90) && (grade <= 99):
-        console.log('Well Done');
-        break;
+//     case (grade >= 90) && (grade <= 99):
+//         console.log('Well Done');
+//         break;
 
-    case (grade >= 75) && (grade <= 89):
-        console.log('Distinction');
-        break;
+//     case (grade >= 75) && (grade <= 89):
+//         console.log('Distinction');
+//         break;
 
-    case (grade >= 50) && (grade <= 74):
-        console.log('Pass');
-        break;
-    case (grade <= 49) && (Math.sign(grade) != -1):
-        console.log('Fail');
-        break;
-    default:
-        console.log('Out of range')
-}
+//     case (grade >= 50) && (grade <= 74):
+//         console.log('Pass');
+//         break;
+//     case (grade <= 49) && (Math.sign(grade) != -1):
+//         console.log('Fail');
+//         break;
+//     default:
+//         console.log('Out of range')
+// }
+
+// Reduce 
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let sum = numbers.reduce((a, b) => {
+//     return a + b;
+// })
+
+// console.log(`Sum: ${sum}`);
+
+// Mapping 
+
+// let numbers = [1, 2, 3, 4, 5];
+// console.table(numbers)
+
+// let people = [
+//     {
+//         id: 1,
+//         firstName: 'Jamie-Lee',
+//         surname: 'Kinnear'
+//     },
+//     {
+//         id: 2,
+//         firstName: 'James Dylan',
+//         surname: 'Kinnear'
+//     },
+// ]
+// console.table(people);
+
+// Using Map 
+// let peopleFirstNames = 
+// people.map((item) => {
+//     return item.firstName
+// })
+// console.log(peopleFirstNames);
+
+//  Example using For Loop
+
+// for (let numb of numbers) {
+// console.log(numb *2);
+// }
+
+// Using Map 
+
+// let double = numbers.map((item) => {
+//     return item * 2;
+// })
+// console.log('Current array: ', numbers);
+// console.log('Double: ', double);
+
+// Hoisting (Envoking above the function)
+
+// addition(5, 8);
+
+// function addition(a, b) {
+//     console.log(a + b);
+// }
+
+// Rest Operator(...)
+
+// function addition(a, b) {
+//     console.log(a + b);
+// }
+
+// addition(5, 8, 3);
+
+// function addition(...args) {
+//     let sum = args.reduce((a, b) => {
+//         return a + b;
+//     })
+//     console.log(sum);
+// }
+
+// addition(5, 8, 3);
+
+// function subtraction(...args) {
+//     let sum = args.reduce((a, b) => {
+//         return a - b;
+//     })
+//     console.log(sum)
+// }
+
+// subtraction(50, 10, 3, 4);
+
+// Filter and Reduce
+
+// function addition(...args){
+//     let sum =
+//     args.filter(Number).reduce((a, b) => {
+//         return a + b;
+//     })
+//     console.log('Sum: ', sum);
+// }
+// addition(1, 2, 'Jamie-Lee', 3, 5)
+
+// OR 
+
+// function addition(...args) {
+//     let filtered = 
+//     args.filter(item => typeof item == 'number')
+//     console.log(filtered.reduce((a, b) => a + b));
+//   }
+//   addition(1, 2, 3, 4, 5);
+
+// Fetch API 
+// fetch('../Data/index.json')
+// .then((response) => {
+//     return response.json();
+// })
+// .then((data) => {
+//     let results = data.results;
+//     console.table(results);
+// })
+
+
+// Async Function 
+
+// async function fetchData() {
+//     let data = await fetch('https://api.chucknorris.io/jokes/random');
+//     return data
+// }
+// console.log(fetchData)
+
+// Fetch Exercise 
+
+fetch('https://api.chucknorris.io/jokes/random')
+.then((res)=>{
+    return res.json();
+})
+.then((data)=>{
+    let tbody = document.querySelector('tbody');
+    Object.keys(data).forEach( (item)=>{
+        if(data[item].length){
+            console.log(`${item}: ${data[item]}`);
+            tbody.innerHTML +=
+            `
+                <tr>
+                    <td>${item}</td>
+                    <td>${data[item]}</td>
+                </tr>
+            `
+        }
+    } )
+})
